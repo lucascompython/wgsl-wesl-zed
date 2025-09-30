@@ -23,9 +23,14 @@
 ((identifier) @type
   (#match? @type "^[A-Z]"))
 
+; Struct declarations
+(struct_decl
+  name: (_) @type)
+
 ; Constants
 (bool_literal) @boolean
 (int_literal) @number
+(hex_int_literal) @number
 (float_literal) @number
 
 ((identifier) @constant
@@ -104,11 +109,15 @@
   "var"
   "let"
   "const"
+  "override"
   "fn"
   "struct"
   "alias"
   "virtual"
-  "override"
+  "diagnostic"
+  "enable"
+  "requires"
+  "const_assert"
 ] @keyword
 
 

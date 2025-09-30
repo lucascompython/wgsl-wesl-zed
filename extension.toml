@@ -14,4 +14,4 @@ languages = ["WGSL/WESL"]
 
 [grammars.wesl]
 repository = "https://github.com/wgsl-tooling-wg/tree-sitter-wesl"
-commit = "94ee6122680ef8ce2173853ca7c99f7aaeeda8ce"
+commit = "3fa2b96bf5c217dae9bf663e2051fcdad0762c19"
