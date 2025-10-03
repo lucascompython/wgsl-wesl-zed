@@ -7,7 +7,7 @@ edition = "2024"
 crate-type = ["cdylib"]
 
 [dependencies]
-zed_extension_api = "0.3"
+zed_extension_api = "0.7"
 
 [profile.release]
 codegen-units = 1 # Allows LLVM to perform better optimization.
