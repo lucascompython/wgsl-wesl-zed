@@ -17,10 +17,10 @@ impl WgslExtension {
             return Ok(path);
         }
 
-        if let Some(path) = &self.cached_binary_path {
-            if fs::metadata(path).map_or(false, |stat| stat.is_file()) {
-                return Ok(path.clone());
-            }
+        if let Some(path) = &self.cached_binary_path
+            && fs::metadata(path).is_ok_and(|stat| stat.is_file())
+        {
+            return Ok(path.clone());
         }
 
         zed::set_language_server_installation_status(
@@ -88,17 +88,16 @@ impl WgslExtension {
             .map_err(|e| format!("failed to download file: {e}"))?;
 
             if platform == zed::Os::Windows {
-                let extracted_exe = match fs::read_dir(&version_dir) {
+                let extracted_exe = match fs::read_dir(&download_path) {
                     Ok(entries) => {
                         let mut exe_path = None;
                         for entry in entries {
-                            if let Ok(entry) = entry {
-                                if let Some(name) = entry.file_name().to_str() {
-                                    if name.ends_with(".exe") {
-                                        exe_path = Some(entry.path());
-                                        break;
-                                    }
-                                }
+                            if let Ok(entry) = entry
+                                && let Some(name) = entry.file_name().to_str()
+                                && name.ends_with(".exe")
+                            {
+                                exe_path = Some(entry.path());
+                                break;
                             }
                         }
                         exe_path.ok_or_else(|| "Could not find extracted executable".to_string())?
@@ -123,7 +122,7 @@ impl WgslExtension {
                     && entry
                         .file_name()
                         .to_str()
-                        .map_or(false, |name| name.starts_with("wgsl-analyzer-"))
+                        .is_some_and(|name| name.starts_with("wgsl-analyzer-"))
                 {
                     fs::remove_dir_all(entry.path()).ok();
                 }
