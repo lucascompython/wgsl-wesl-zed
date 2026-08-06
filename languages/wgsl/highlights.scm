@@ -9,11 +9,11 @@
 
 ; Vector types
 ((identifier) @type
-  (#match? @type "^vec[2-4]$"))
+  (#match? @type "^vec[2-4][fihu]?$"))
 
 ; Matrix types
 ((identifier) @type
-  (#match? @type "^mat[2-4]x[2-4]$"))
+  (#match? @type "^mat[2-4]x[2-4][fh]?$"))
 
 ; Special built-in types
 ((identifier) @type
