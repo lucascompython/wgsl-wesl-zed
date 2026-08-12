@@ -47,6 +47,9 @@
 (call_expression
   (identifier) @function.call)
 
+(func_call_statement
+  (identifier) @function.call)
+
 ; Templates
 (template_list) @punctuation
 
