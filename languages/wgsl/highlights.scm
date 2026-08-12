@@ -1,3 +1,6 @@
+; Catch-all: prevents outer language string color from bleeding through injections
+(identifier) @variable
+
 ; Comments
 (line_comment) @comment
 (block_comment) @comment
