@@ -1,6 +1,6 @@
 id = "wgsl-wesl"
 name = "WGSL/WESL"
-version = "0.0.2"
+version = "0.0.3"
 schema_version = 1
 authors = ["Lucas de Linhares <lucasdelinhares@gmail.com>"]
 description = "Supports grammar for WGSL, WESL as well as best-effort support for Bevy (naga_oil) extensions and uses the wgsl-analyzer LSP"
